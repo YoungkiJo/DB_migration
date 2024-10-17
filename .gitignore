@@ -1,0 +1,8 @@
+
+
+poetry.lock
+
+/src/models/__pycache__/
+/src/queries/__pycache__/
+/src/configs/__pycache__/
+/src/services/__pycache__/
