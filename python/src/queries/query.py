@@ -18,7 +18,5 @@ class ms_table_query:
         return query
     
     def select_all_data(self, table_name):
-        query = f"""
-        SELECT * FROM {table_name}
-        """
+        query = f"""SELECT * FROM {table_name}"""
         return query

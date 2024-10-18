@@ -1,8 +1,10 @@
 
 
-poetry.lock
+/python/poetry.lock
 
-/src/models/__pycache__/
-/src/queries/__pycache__/
-/src/configs/__pycache__/
-/src/services/__pycache__/
+/python/src/models/__pycache__/
+/python/src/queries/__pycache__/
+/python/src/configs/__pycache__/
+/python/src/services/__pycache__/
+
+/go/go.sum

@@ -2,13 +2,13 @@ import pymssql
 from sqlalchemy import create_engine, MetaData, Table, Column, String, insert
 
 
-from configs.config import Settings
+from configs.config import sqlserver_config, postgre_config, mysql_config
 from queries.query import ms_table_query
 from models.ms_post_model import SQLSERVER2POST
 from models.ms_my_model import SQLSERVER2MYSQL
 
 def select_msdb_info():
-    ms_sql = Settings()
+    ms_sql = sqlserver_config
     queries = ms_table_query()
 
     # SQL Server에 연결
@@ -54,13 +54,13 @@ def select_msdb_info():
 
 
 def make_table(ms_tables, ms_table_datatype, ms_total_data, dbtype: str):
-    info = Settings()
-
     if dbtype == "postgresql":    
-        DATABASE_URL = f"postgresql://{info.post_user}:{info.post_pw}@{info.post_server}:{info.post_port}/{info.post_db}"
-        data_type_mapping = SQLSERVER2POST().ms_data_mapping()
+        post = postgre_config()
+        DATABASE_URL = f"postgresql://{post.post_user}:{post.post_pw}@{post.post_server}:{post.post_port}/{post.post_db}"
+        data_type_mapping = SQLSERVER2POST().ms_post_data_mapping()
     elif dbtype == "mysql":
-        DATABASE_URL = f"mysql+pymysql://{info.my_user}:{info.my_pw}@{info.my_server}:{info.my_port}/{info.my_db}"
+        mysql = mysql_config()
+        DATABASE_URL = f"mysql+pymysql://{mysql.my_user}:{mysql.my_pw}@{mysql.my_server}:{mysql.my_port}/{mysql.my_db}"
         data_type_mapping = SQLSERVER2MYSQL().ms_mysql_data_mapping()
     else:
         return
