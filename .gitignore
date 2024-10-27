@@ -8,3 +8,5 @@
 /python/src/services/__pycache__/
 
 /go/go.sum
+
+/rust/target/
